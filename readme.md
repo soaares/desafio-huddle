@@ -35,6 +35,7 @@
 
 - Como testar
 
+    - Abrir o postman
     - Crie um usuário na rota na requisição: pasta Users -> Clicar na requisição Criar Usuário -> Clicar aba body e preencher os campos username e password -> Clicar em send
     - Em seguida faça login na rota: pasta Users -> Clicar na requisição Login de usuário -> Clicar na aba body e preencher os campos username e password com as mesmas informações que o usuário foi criado
     - Em seguida estará apto a utilizar qualquer rota da aplicação
