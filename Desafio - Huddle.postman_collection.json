@@ -1,0 +1,267 @@
+{
+	"info": {
+		"_postman_id": "448d4042-44d3-4344-9e59-d57921631a24",
+		"name": "Desafio - Huddle",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "17594480"
+	},
+	"item": [
+		{
+			"name": "Tasks",
+			"item": [
+				{
+					"name": "Criar task",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Levar cachorro para passear\",\r\n    \"description\": \"Lembrar de levar cachorro para passear\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/tasks",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"tasks"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Atualizar task",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"status\": \"done\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/tasks/583bb585-89d2-4563-b7c1-9c3e559988e2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"tasks",
+								"583bb585-89d2-4563-b7c1-9c3e559988e2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Busca todas as tasks",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/tasks",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"tasks"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Busca task por Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/tasks/583bb585-89d2-4563-b7c1-9c3e559988e2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"tasks",
+								"583bb585-89d2-4563-b7c1-9c3e559988e2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete task por Id",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/tasks/583bb585-89d2-4563-b7c1-9c3e559988e2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"tasks",
+								"583bb585-89d2-4563-b7c1-9c3e559988e2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Criar usuário",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"rapha2\",\r\n    \"password\": \"teste123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/signup",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login de usuário",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Verifica se a resposta foi bem-sucedida\r",
+									"if (pm.response.code === 200) {\r",
+									"    // Extrai o token da resposta\r",
+									"    const token = pm.response.json().token;\r",
+									"\r",
+									"    // Salva o token em uma variável de ambiente ou de coleção\r",
+									"    pm.environment.set(\"jwt_token\", token); // Variável de ambiente\r",
+									"    // OU\r",
+									"    pm.collectionVariables.set(\"jwt_token\", token); // Variável de coleção\r",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"rapha\",\r\n    \"password\": \"teste123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Rota raiz",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					"// Obtém o token da variável de ambiente ou de coleção\r",
+					"const token = pm.environment.get(\"jwt_token\") || pm.collectionVariables.get(\"jwt_token\");\r",
+					"\r",
+					"// Define o cabeçalho de autorização\r",
+					"pm.request.headers.add({\r",
+					"    key: \"Authorization\",\r",
+					"    value: `Bearer ${token}`\r",
+					"});"
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "jwt_token",
+			"value": ""
+		}
+	]
+}
